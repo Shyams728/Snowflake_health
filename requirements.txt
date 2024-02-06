@@ -1,0 +1,15 @@
+# Dev environment
+pip
+autopep8
+
+#app
+streamlit
+pandas
+numpy
+plotly
+SQLAlchemy
+extra_streamlit_components
+streamlit-shadcn-ui
+streamlit_extras
+streamlit-pandas-profiling
+geopandas
