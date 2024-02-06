@@ -24,84 +24,84 @@ def load_data_from_db(query):
 
 
 
-# # Fetch data from SQLite based on user selection from dropdown
-# dropdown_options = {
-#     '---': None,
-#     "Nationwise Aggregated User Data": "aggregated_user_counry",
-#     "Nationwise Aggregated Insurence Data": "aggregated_insurence_counry",
-#     "Statewise Map Transaction Data": "map_transaction_hover_state",
-#     "Nationwise Top Transaction Data": "top_transaction_country",
-#     "Statewise Top Insurence Data": "top_insurence_state",
-#     "Statewise Aggregated Transaction Data": "aggregated_transaction_state",
-#     "Nationwise Map User Data": "map_user_hover_contry",
-#     "Nationwise Map Insurence Data": "map_insurence_hover_counry",
-#     "Statewise Aggregated User Data": "aggregated_user_state",
-#     "Statewise Map User Data": "map_user_hover_state",
-#     "Nationwise Map Transaction Data": "map_transaction_hover_counry",
-#     "Nationwise Top Insurence Data": "top_insurence_country",
-#     "Statewise Aggregated Insurence Data": "aggregated_insurence_state",
-#     "Nationwise Aggregated Transaction Data": "aggregated_transaction_country",
-#     "Nationwise Top User Data": "top_user_country",
-#     "Statewise Top User Data": "top_user_state",
-#     "Top Ten States Transactions": "your_table_name WHERE ...",
-#     "Top Ten Districts": "your_table_name WHERE ...",
-#     "Top Ten Pincodes": "your_table_name WHERE ...",
-# }
+# Fetch data from SQLite based on user selection from dropdown
+dropdown_options = {
+    '---': None,
+    "Nationwise Aggregated User Data": "aggregated_user_counry",
+    "Nationwise Aggregated Insurence Data": "aggregated_insurence_counry",
+    "Statewise Map Transaction Data": "map_transaction_hover_state",
+    "Nationwise Top Transaction Data": "top_transaction_country",
+    "Statewise Top Insurence Data": "top_insurence_state",
+    "Statewise Aggregated Transaction Data": "aggregated_transaction_state",
+    "Nationwise Map User Data": "map_user_hover_contry",
+    "Nationwise Map Insurence Data": "map_insurence_hover_counry",
+    "Statewise Aggregated User Data": "aggregated_user_state",
+    "Statewise Map User Data": "map_user_hover_state",
+    "Nationwise Map Transaction Data": "map_transaction_hover_counry",
+    "Nationwise Top Insurence Data": "top_insurence_country",
+    "Statewise Aggregated Insurence Data": "aggregated_insurence_state",
+    "Nationwise Aggregated Transaction Data": "aggregated_transaction_country",
+    "Nationwise Top User Data": "top_user_country",
+    "Statewise Top User Data": "top_user_state",
+    "Top Ten States Transactions": "your_table_name WHERE ...",
+    "Top Ten Districts": "your_table_name WHERE ...",
+    "Top Ten Pincodes": "your_table_name WHERE ...",
+}
 
-# # Streamlit app
-# st.title("SQL Table Visualization")
+# Streamlit app
+st.title("SQL Table Visualization")
 
-# # Create dropdown for selecting a table
-# selected_option = st.selectbox("Select an option:", list(dropdown_options.keys()))
+# Create dropdown for selecting a table
+selected_option = st.selectbox("Select an option:", list(dropdown_options.keys()))
 
-# # Fetch data based on the selected option
-# if selected_option != '---':
-#     if "Statewise" in selected_option:
-#         show_all_states = st.checkbox("Show data for all states")
+# Fetch data based on the selected option
+if selected_option != '---':
+    if "Statewise" in selected_option:
+        show_all_states = st.checkbox("Show data for all states")
 
-#         available_states = [
-#         "dadra-&-nagar-haveli-&-daman-&-diu",
-#         "west-bengal",
-#         "arunachal-pradesh",
-#         "puducherry",
-#         "kerala",
-#         "uttar-pradesh",
-#         "mizoram",
-#         "meghalaya",
-#         "goa",
-#         "bihar",
-#         "tripura",
-#         "nagaland",
-#         "delhi",
-#         "chandigarh",
-#         "tamil-nadu",
-#         "jharkhand",
-#         "sikkim",
-#         "maharashtra",
-#         "uttarakhand",
-#         "ladakh",
-#         "rajasthan",
-#         "madhya-pradesh",
-#         "manipur",
-#         "andaman-and-nicobar-islands",
-#         "assam",
-#         "punjab",
-#         "odisha",
-#         "telangana",
-#         "jammu-and-kashmir",
-#         "himachal-pradesh",
-#         "karnataka",
-#         "andhra-pradesh",
-#         "haryana",
-#         "lakshadweep",
-#         "gujarat",
-#         "chhattisgarh",
-#         ]
+        available_states = [
+        "dadra-&-nagar-haveli-&-daman-&-diu",
+        "west-bengal",
+        "arunachal-pradesh",
+        "puducherry",
+        "kerala",
+        "uttar-pradesh",
+        "mizoram",
+        "meghalaya",
+        "goa",
+        "bihar",
+        "tripura",
+        "nagaland",
+        "delhi",
+        "chandigarh",
+        "tamil-nadu",
+        "jharkhand",
+        "sikkim",
+        "maharashtra",
+        "uttarakhand",
+        "ladakh",
+        "rajasthan",
+        "madhya-pradesh",
+        "manipur",
+        "andaman-and-nicobar-islands",
+        "assam",
+        "punjab",
+        "odisha",
+        "telangana",
+        "jammu-and-kashmir",
+        "himachal-pradesh",
+        "karnataka",
+        "andhra-pradesh",
+        "haryana",
+        "lakshadweep",
+        "gujarat",
+        "chhattisgarh",
+        ]
 
 #         # Check if selected option involves statewise data
 #         if not show_all_states:
 #             selected_state = st.selectbox("Select a state:", available_states)
-#             query = f"SELECT * FROM {selected_option.replace(' ', '_').lower()} WHERE state = '{selected_state}';"
+#             query = f"SELECT * FROM {selected_option.lower()} WHERE state = '{selected_state}';"
 #         else:
 #             query = f"SELECT * FROM {selected_option.replace(' ', '_').lower()};"
 #     else:
