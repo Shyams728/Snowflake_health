@@ -57,7 +57,7 @@ def plot_map_chart(data, selected_tab):
         locations=locations_column,
         color=color_column,
         hover_data=hover_data_columns,
-        # projection="robinson",
+        projection="robinson",
         title= selected_tab,
         color_continuous_scale=color_continuous_scale,
         range_color=(data[color_column].min(), data[color_column].max())
