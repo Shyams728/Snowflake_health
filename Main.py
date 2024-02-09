@@ -21,9 +21,6 @@ def load_data_from_db(query):
     return df
 
 
-
-
-
 # Fetch data from SQLite based on user selection from dropdown
 dropdown_options = {
     '---': None,
@@ -59,59 +56,30 @@ if selected_option != '---':
     if "Statewise" in selected_option:
         show_all_states = st.checkbox("Show data for all states")
 
-        available_states = [
-        "dadra-&-nagar-haveli-&-daman-&-diu",
-        "west-bengal",
-        "arunachal-pradesh",
-        "puducherry",
-        "kerala",
-        "uttar-pradesh",
-        "mizoram",
-        "meghalaya",
-        "goa",
-        "bihar",
-        "tripura",
-        "nagaland",
-        "delhi",
-        "chandigarh",
-        "tamil-nadu",
-        "jharkhand",
-        "sikkim",
-        "maharashtra",
-        "uttarakhand",
-        "ladakh",
-        "rajasthan",
-        "madhya-pradesh",
-        "manipur",
-        "andaman-and-nicobar-islands",
-        "assam",
-        "punjab",
-        "odisha",
-        "telangana",
-        "jammu-and-kashmir",
-        "himachal-pradesh",
-        "karnataka",
-        "andhra-pradesh",
-        "haryana",
-        "lakshadweep",
-        "gujarat",
-        "chhattisgarh",
-        ]
+        available_states = ['puducherry', 'tamil nadu', 'uttar pradesh', 'madhya pradesh',
+       'andhra pradesh', 'tripura', 'manipur', 'maharashtra',
+       'dadra & nagar haveli & daman & diu', 'meghalaya',
+       'andaman & nicobar islands', 'haryana', 'rajasthan', 'ladakh',
+       'punjab', 'assam', 'jharkhand', 'odisha', 'bihar', 'kerala',
+       'karnataka', 'chandigarh', 'telangana', 'himachal pradesh',
+       'west bengal', 'gujarat', 'sikkim', 'nagaland', 'mizoram',
+       'chhattisgarh', 'jammu & kashmir', 'goa', 'arunachal pradesh',
+       'delhi', 'uttarakhand', 'lakshadweep']
 
-#         # Check if selected option involves statewise data
-#         if not show_all_states:
-#             selected_state = st.selectbox("Select a state:", available_states)
-#             query = f"SELECT * FROM {selected_option.lower()} WHERE state = '{selected_state}';"
-#         else:
-#             query = f"SELECT * FROM {selected_option.replace(' ', '_').lower()};"
-#     else:
-#         query = f'SELECT * FROM {dropdown_options[selected_option]};'
+        # Check if selected option involves statewise data
+        if not show_all_states:
+            selected_state = st.selectbox("Select a state:", available_states)
+            query = f"SELECT * FROM {selected_option} WHERE state = '{selected_state}';"
+        else:
+            query = f"SELECT * FROM {selected_option};"
+    else:
+        query = f'SELECT * FROM {dropdown_options[selected_option]};'
 
-#     # Load data from the database
-#     df = load_data_from_db(query)
+    # Load data from the database
+    df = load_data_from_db(query)
 
-#     # Display the selected data
-#     st.write(f"Displaying data based on {selected_option}:")
+    # Display the selected data
+    st.write(f"Displaying data based on {selected_option}:")
 
 query = 'SELECT * FROM aggregated_insurence_state;'
 df = load_data_from_db(query)
